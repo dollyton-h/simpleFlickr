@@ -10,7 +10,7 @@ function App() {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    let url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=42f9a936ec32cb70bcd8c2bb92c7b576&tags=${search}&per_page=10&page=${page}&format=json&nojsoncallback=1`;
+    let url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=42f9a936ec32cb70bcd8c2bb92c7b576&tags=${search}&per_page=12&page=${page}&format=json&nojsoncallback=1`;
 
     axios
       .get(url, {
@@ -38,6 +38,8 @@ function App() {
     setPage(value);
   };
 
+  console.log(page, "<<<<< page");
+
   return (
     <>
       <div>
@@ -55,7 +57,7 @@ function App() {
         <img className="gbr" src={e} alt="a" />
       ))}
 
-      <Pagination count={5} page={page} onChange={handleChange} />
+      <Pagination count={4} page={page} onChange={handleChange} />
     </>
   );
 }
