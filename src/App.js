@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
-import Typography from "@material-ui/core/Typography";
 import { Pagination } from "@material-ui/lab";
 
 function App() {
