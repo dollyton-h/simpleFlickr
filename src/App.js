@@ -10,22 +10,19 @@ function App() {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    let url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=68ac49c07ba61167a69d3eba81f6505b&tags=${search}&per_page=15&page=${page}&format=json&nojsoncallback=1`;
+    let url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=42f9a936ec32cb70bcd8c2bb92c7b576&tags=${search}&per_page=10&page=${page}&format=json&nojsoncallback=1`;
 
     axios
       .get(url, {
         headers: {
-          Accept: "application/json",
           "Content-Type": "application/json",
         },
-        mode: "no-cors",
-        credentials: "include",
       })
       .then(function (response) {
         return response;
       })
-      .then(function (k) {
-        let pict = k.data.photos.photo.map((pic) => {
+      .then(function (item) {
+        let pict = item.data.photos.photo.map((pic) => {
           let srcc = `https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}.jpg`;
           return srcc;
         });
@@ -37,7 +34,7 @@ function App() {
       });
   }, [search, page]);
 
-  const handleChange = (event, value) => {
+  const handleChange = (value) => {
     setPage(value);
   };
 
