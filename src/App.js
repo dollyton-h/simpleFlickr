@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
-
+import Typography from "@material-ui/core/Typography";
 import { Pagination } from "@material-ui/lab";
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
       });
   }, [search, page]);
 
-  const handleChange = (value) => {
+  const handleChange = (event, value) => {
     setPage(value);
   };
 
@@ -56,8 +56,7 @@ function App() {
       {photo.map((e) => (
         <img className="gbr" src={e} alt="a" />
       ))}
-
-      <Pagination count={4} page={page} onChange={handleChange} />
+      <Pagination size="large" count={5} page={page} onChange={handleChange} />
     </>
   );
 }
